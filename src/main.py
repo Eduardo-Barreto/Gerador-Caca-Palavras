@@ -1,19 +1,23 @@
 from Table import Table
 from Word import Word
 
-table = Table(15, 15)
+table = Table(10, 10)
 
-long_test = Word(
-    text='isso_obviamente_não_cabe_numa_table_15x15',
-    position=(0, 0),
-    orientation='HORIZONTAL'
-)
-normal_test = Word(
-    text='essa_cabe',
-    position=(1, 0),
+diagonal_right = Word(
+    text='palavra1',
+    position=(1, 1),
     orientation='DIAGONAL_RIGHT'
 )
+diagonal_left = Word(
+    text='palavra2',
+    position=(0, 8),
+    orientation='DIAGONAL_LEFT',
+    inverted=True
+)
 
-table.add_word(long_test)
-table.add_word(normal_test)
+try:
+    table.add_word(diagonal_right)
+    table.add_word(diagonal_left)
+except Exception as error:
+    print(error)
 table.show()
