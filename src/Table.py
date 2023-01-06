@@ -38,17 +38,28 @@ class Table:
         word: Word
             Palavra a ser adicionada
         '''
-        # TODO: Adicionar validação para verificar se a palavra cabe
-        # TODO: Adicionar validação para verificar se a palavra não se sobrepõe a outra
+        # TODO: Adicionar validação: sobreposição
         row, col = word.position
+        row_increment = orientation_increment_map[word.orientation][0]
+        col_increment = orientation_increment_map[word.orientation][1]
+
+        end_row = row + (row_increment * len(word.text))
+        if end_row > self.rows:
+            print(f'Palavra não cabe na table: {word.text}')
+            return
+
+        end_col = col + (col_increment * len(word.text))
+        if end_col > self.cols:
+            print(f'Palavra não cabe na table: {word.text}')
+            return
 
         if word.inverted:
             word.text = word.text[::-1]
 
         for letter in word.text:
             self.table[row][col] = letter
-            row += orientation_increment_map[word.orientation][0]
-            col += orientation_increment_map[word.orientation][1]
+            row += row_increment
+            col += col_increment
 
     def show(self) -> None:
         '''

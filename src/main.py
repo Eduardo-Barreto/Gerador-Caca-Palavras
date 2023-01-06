@@ -3,33 +3,17 @@ from Word import Word
 
 table = Table(15, 15)
 
-horizontal = Word(
-    text='HORIZONTAL',
+long_test = Word(
+    text='isso_obviamente_não_cabe_numa_table_15x15',
     position=(0, 0),
-    orientation='HORIZONTAL',
-    inverted=True
+    orientation='HORIZONTAL'
 )
-vertical = Word(
-    text='VERTICAL',
+normal_test = Word(
+    text='essa_cabe',
     position=(1, 0),
-    orientation='VERTICAL',
-    inverted=True
-)
-diagonal_right = Word(
-    text='DIAGONAL_RIGHT',
-    position=(1, 1),
-    orientation='DIAGONAL_RIGHT',
-    inverted=True
-)
-diagonal_left = Word(
-    text='LEFT',
-    position=(10, 8),
-    orientation='DIAGONAL_LEFT',
-    inverted=True
+    orientation='DIAGONAL_RIGHT'
 )
 
-table.add_word(horizontal)
-table.add_word(vertical)
-table.add_word(diagonal_right)
-table.add_word(diagonal_left)
+table.add_word(long_test)
+table.add_word(normal_test)
 table.show()
