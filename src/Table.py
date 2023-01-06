@@ -38,10 +38,12 @@ class Table:
         word: Word
             Palavra a ser adicionada
         '''
-        # TODO: Adicionar suporte a palavras invertidas
         # TODO: Adicionar validação para verificar se a palavra cabe
         # TODO: Adicionar validação para verificar se a palavra não se sobrepõe a outra
         row, col = word.position
+
+        if word.inverted:
+            word.text = word.text[::-1]
 
         for letter in word.text:
             self.table[row][col] = letter
