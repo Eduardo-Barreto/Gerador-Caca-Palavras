@@ -2,22 +2,21 @@ from Table import Table
 from Word import Word
 
 table = Table(10, 10)
+words = [
+    'python',
+    'caça',
+    'abacate',
+    'irra'
+]
 
-diagonal_right = Word(
-    text='palavra1',
-    position=(1, 1),
-    orientation='DIAGONAL_RIGHT'
-)
-diagonal_left = Word(
-    text='palavra2',
-    position=(0, 8),
-    orientation='DIAGONAL_LEFT',
-    inverted=True
-)
+for word_text in words:
+    word = Word(
+        text=word_text
+    )
+    word.randomize_orientation()
+    word.randomize_position(table.rows, table.cols)
+    table.force_add_word(word)
 
-try:
-    table.add_word(diagonal_right)
-    table.add_word(diagonal_left)
-except Exception as error:
-    print(error)
+table.fill_table_with_random_letters()
 table.show()
+table.print_words()
